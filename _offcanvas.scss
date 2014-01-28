@@ -1,0 +1,112 @@
+.navigation--offcanvas {
+	@include single-transition(all, 200ms, ease, 0s);
+
+	.menu { margin: 0; }
+
+	.menu-item a {
+		display: block;
+		line-height: 11px;
+
+		font-size: 11px;
+		text-transform: uppercase;
+
+		padding: 10px 15px;
+		@media #{$small} { padding: 10px 100px 10px 15px; }
+
+		color: $f-color;
+		background: $b-color;
+		&:hover, &:focus { background: $a-color; }
+	}
+	.current-menu-item a { background: $a-color; }
+
+	.navigation__trigger {
+		display: block;
+
+		font-size: 11px;
+		font-weight: bold;
+		text-transform: uppercase;
+
+		color: $f-color;
+		background: $a-color url(images/menu.png) 20px center no-repeat;
+	}
+
+	.navigation__menu {
+		overflow: hidden;
+		z-index: 20;
+		background: $b-color;
+	}
+
+	@media #{$mobile} {
+		width: 100%;
+
+		.navigation__trigger {
+			height: 60px;
+			line-height: 60px;
+			padding-left: 70px;
+		}
+
+		.navigation__menu {
+			position: absolute;
+			top: 60px;
+			left: 0;
+			right: 0;
+			height: 0;
+		}
+	}
+
+	@media #{$small} {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		width: 60px;
+		height: 100%;
+
+		.navigation__trigger {
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			width: 60px;
+			padding: 20px 10px 40px 10px;
+			text-align: center;
+			background: $a-color url(images/menu.png) center 50px no-repeat;
+		}
+
+		.navigation__menu {
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			width: 0;
+		}
+	}
+
+}
+
+
+/* PRIMARY: OFF-CANVAS ---------------------------------------------- */
+
+
+@media #{$mobile} {
+	.off-canvas .navigation--primary .navigation__menu { height: auto; }
+}
+
+@media #{$small} {
+	body { overflow-x: hidden; }
+	.header,
+	.banner,
+	.slabs,
+	.main,
+	.footer { margin-left: 60px; }
+
+	.off-canvas { overflow-x: none; }
+	.off-canvas .header,
+	.off-canvas .banner,
+	.off-canvas .slabs,
+	.off-canvas .main,
+	.off-canvas .footer { margin-left: 310px; }
+	.off-canvas .navigation--primary .navigation__trigger { left: 250px; }
+	.off-canvas .navigation--primary .navigation__menu { width: 250px; }
+}
+
